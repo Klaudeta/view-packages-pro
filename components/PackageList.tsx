@@ -16,8 +16,8 @@ const PackageList: React.FC<PackageListProps> = (props) => {
             </header>
             <ul className={classes.packagesul}>
                 {props.items.map(item => (
-                    <Link href={`/${item.name}`} >
-                        <li key={item.name} className={classes.packageli}>
+                    <Link href={`/${item.name}`} key={item.name} >
+                        <li className={classes.packageli}>
                             <span>{item.name}</span>
                             <span>{item.version}</span>
                         </li>
