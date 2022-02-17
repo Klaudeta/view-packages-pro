@@ -1,3 +1,4 @@
+// Comment: pop-quiz: can you explain differnce between "import type" and normal "import"?
 import type { GetStaticPaths, NextPage } from 'next'
 import PackageList from '../components/PackageList'
 import { listPackageNames } from "./api/services/PackageReader";

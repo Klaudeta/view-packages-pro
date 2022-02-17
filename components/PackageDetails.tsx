@@ -10,6 +10,9 @@ type PackageDetailsProp = {
     dependant?: string[]
 }
 
+/* Comment: A common pattern is to destructure the properties, so it would be 
+const PackageDetails: React.FC<PackageDetailsProp> = ({name, version, ...}) => {
+*/
 const PackageDetails: React.FC<PackageDetailsProp> = (props) => {
     return (
         <div>

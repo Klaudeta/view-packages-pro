@@ -1,3 +1,4 @@
+// Comment: fyi: you can do import * as fs from "fs/promises"
 import * as fs from "fs";
 import * as path from 'path';
 
@@ -30,7 +31,8 @@ const dependentField = "Dependent";
 
 const packageStatusFile = process.env.PACKAGE_STATUS_FILE || path.resolve('.', "packages.status");
 
-const searchableField:(fieldName: string) => string = (fieldName) => fieldName + ': ';
+// Comment: nitpick: I would argue this function to be unnecessary and I would just inline things (causes unnecessary code-jumping for only trivial functionality)
+const searchableField:(fieldName: string) => string = (fieldName) => fieldName + ': '; // Comment: A common practice nowadays is to wrap everything into a template literal, no matter how trivial it would be: `${fieldName}: `.
 
 const readSimpleFieldFromParagraph: (packageParagraph: string, fieldName: string) => string = (packageParagraph, fieldName) => {
     const _fieldName = searchableField(fieldName);
@@ -38,6 +40,9 @@ const readSimpleFieldFromParagraph: (packageParagraph: string, fieldName: string
     const fieldValue = packageParagraph.split(fieldLineDelimiter)
                 .filter(line => line.startsWith(_fieldName))
                 .map(line => line.replace(_fieldName, ''));
+                
+    // Comment: A common pattern here would be to return a ternary: return fieldValue ? fieldValue[0] : ''.
+    // Comment: ..Or, even juicier, using a combo of "optional property accessor" and "nullish coalescing operator": return fieldValue?.[0] ?? ''
     if(fieldValue){
         return fieldValue[0];
     }else{
@@ -82,9 +87,9 @@ export const listPackageNames: () => Promise<{name: string, version: string}[]> 
             .split(paragraphDelimiter)
             .filter(paragraph => readSimpleFieldFromParagraph(paragraph, packageField) !== undefined)
             .map(paragraph => {
-                const packageName = readSimpleFieldFromParagraph(paragraph, packageField)!;
-                const version = readSimpleFieldFromParagraph(paragraph, versionField)!;
-                return {name: packageName, version: version};
+                const packageName = readSimpleFieldFromParagraph(paragraph, packageField)!; // Comment: These !'s are unnecessary
+                const version = readSimpleFieldFromParagraph(paragraph, versionField)!; // Comment: These !'s are unnecessary
+                return {name: packageName, version: version}; // Comment: protip, if the variables are named "name" and "version", you could return the shorthand version: `return {name, version}`
             })
         );
 }
