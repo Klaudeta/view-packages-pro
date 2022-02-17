@@ -16,6 +16,7 @@ const PackageList: React.FC<PackageListProps> = (props) => {
             </header>
             <ul className={classes.packagesul}>
                 {props.items.map(item => (
+                    // Comment: Do you know why this is a warning?
                     <Link href={`/${item.name}`} key={item.name} >
                         <li className={classes.packageli}>
                             <span>{item.name}</span>
