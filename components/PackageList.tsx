@@ -8,13 +8,11 @@ type PackageListProps = {
     items: { name: string, version: string }[]
 }
 
-const PackageList: React.FC<PackageListProps> = (props) => {
-    const [packageList, setPackageList] = useState(props.items as { name: string, version: string }[]);
+const PackageList: React.FC<PackageListProps> = ({ items }) => {
+    const [packageList, setPackageList] = useState(items);
 
-    const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const newValue = e.currentTarget.value;
-        setPackageList(props.items.filter(item => item.name.includes(newValue)));
-    }
+    const onChange = (e: React.FormEvent<HTMLInputElement>) =>
+        setPackageList(items.filter(item => item.name.includes(e.currentTarget.value)))
 
     return (
         <div>
@@ -24,7 +22,7 @@ const PackageList: React.FC<PackageListProps> = (props) => {
             </header>
             <ul className={classes.packagesul}>
                 {packageList.map(item => (
-                    <Link href={`/${item.name}`} key={item.name} >
+                    <Link href={`/${item.name}`} key={item.name} passHref>
                         <a>
                             <li className={classes.packageli}>
                                 <span>{item.name}</span>

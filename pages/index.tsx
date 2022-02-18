@@ -1,35 +1,19 @@
-import type { GetStaticPaths, NextPage } from "next";
+import type { NextPage } from "next";
+import useSwr from "swr";
 import PackageList from "../components/PackageList";
-import { listPackageNames } from "./api/services/PackageReader";
 
-const DUMMY_PACKAGE_LIST = [
-  {
-    name: "python-pkg-resources",
-    version: "0.6.24-1ubuntu1",
-  },
-  {
-    name: "tcpd",
-    version: "1:2.4.0-5",
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
-const Home: NextPage<{ packageList: { name: string; version: string }[] }> = (
-  props
-) => {
-  return <PackageList items={props.packageList}></PackageList>;
-};
+const Home: NextPage = () => {
 
-export const getStaticProps = async () => {
-  // fetch data from an API
+  const { data, error } = useSwr("/api/package-reader",
+    fetcher
+  )
 
-  const packageNames = await listPackageNames();
+  if (error) return <div>Failed to load package names</div>
+  if (!data) return <div>Loading...</div>
 
-  return {
-    props: {
-      packageList: packageNames,
-    },
-    revalidate: 1,
-  };
+  return <PackageList items={data} ></PackageList>;
 };
 
 export default Home;

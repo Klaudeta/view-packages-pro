@@ -16,9 +16,11 @@ const PackageDetails: React.FC<PackageDetailsProp> = (props) => {
             <header className={sharedClasses.header}>
                 <div className={sharedClasses.logo}>Package Details</div>
                 <Link href='/' >
-                    <span className={classes.back}>
-                        Back to package list
-                    </span>
+                    <a>
+                        <span className={classes.back}>
+                            Back to package list
+                        </span>
+                    </a>
                 </Link>
             </header>
 
