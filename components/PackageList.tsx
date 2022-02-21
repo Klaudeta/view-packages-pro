@@ -8,12 +8,15 @@ type PackageListProps = {
 };
 
 const PackageList: React.FC<PackageListProps> = ({ items }) => {
-  const [packageList, setPackageList] = useState(items);
+  const [filter, setFilter] = useState("");
+  console.log(`Rendering PackageList with fitler ${filter}`);
 
   const onChange = (e: React.FormEvent<HTMLInputElement>) =>
-    setPackageList(
-      items.filter((item) => item.name.includes(e.currentTarget.value))
-    );
+    setFilter(e.currentTarget.value);
+
+  const packageList = filter
+    ? items.filter(({ name }) => name.includes(filter))
+    : items;
 
   return (
     <div>
