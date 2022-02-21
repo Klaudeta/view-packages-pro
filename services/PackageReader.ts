@@ -41,15 +41,12 @@ const readSimpleFieldFromParagraph: (
 ) => string = (packageParagraph, fieldName) => {
   const _fieldName = searchableField(fieldName);
 
-  const fieldValue = packageParagraph
+  const [fieldValue] = packageParagraph
     .split(fieldLineDelimiter)
     .filter((line) => line.startsWith(_fieldName))
     .map((line) => line.replace(_fieldName, ""));
-  if (fieldValue) {
-    return fieldValue[0];
-  } else {
-    return "";
-  }
+
+  return fieldValue ?? "";
 };
 
 const readMultiLineFieldFromParagraph: (
