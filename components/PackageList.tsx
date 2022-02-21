@@ -3,8 +3,10 @@ import { useState } from "react";
 import sharedClasses from "./Package.module.css";
 import classes from "./PackageList.module.css";
 
+export type PackageItem = { name: string; version: string };
+
 type PackageListProps = {
-  items: { name: string; version: string }[];
+  items: PackageItem[];
 };
 
 const PackageList: React.FC<PackageListProps> = ({ items }) => {
