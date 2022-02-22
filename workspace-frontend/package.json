@@ -1,0 +1,23 @@
+{
+  "name": "workspace-frontend",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.0.10",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-query": "^3.34.15"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.17",
+    "@types/react": "17.0.39",
+    "eslint": "*",
+    "eslint-config-next": "12.0.10",
+    "typescript": "*"
+  }
+}
