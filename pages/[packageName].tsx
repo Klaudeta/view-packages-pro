@@ -7,11 +7,12 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PackageDetails from "../components/PackageDetails";
+import { PackageDetailsResult } from "./api/package-reader/[packageName]";
 
 const PackageDetailsPage: NextPage = () => {
   const router = useRouter();
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<PackageDetailsResult>();
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -21,10 +22,8 @@ const PackageDetailsPage: NextPage = () => {
     if (router.query.packageName) {
       fetch(`/api/package-reader/${router.query.packageName}`)
         .then((data) => data.json())
-        .then((data) => {
-          setData(data);
-          setLoading(false);
-        });
+        .then(setData)
+        .finally(() => setLoading(false));
     } else {
       setError("No package selected");
       setLoading(false);
