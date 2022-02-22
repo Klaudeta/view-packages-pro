@@ -1,35 +1,23 @@
-import type { GetStaticPaths, NextPage } from "next";
-import PackageList from "../components/PackageList";
-import { listPackageNames } from "./api/services/PackageReader";
+import type { NextPage } from "next";
+import { useEffect, useState } from "react";
+import PackageList, { PackageItem } from "../components/PackageList";
 
-const DUMMY_PACKAGE_LIST = [
-  {
-    name: "python-pkg-resources",
-    version: "0.6.24-1ubuntu1",
-  },
-  {
-    name: "tcpd",
-    version: "1:2.4.0-5",
-  },
-];
+const Home: NextPage = () => {
+  const [data, setData] = useState<PackageItem[]>([]);
+  const [isLoading, setLoading] = useState(false);
 
-const Home: NextPage<{ packageList: { name: string; version: string }[] }> = (
-  props
-) => {
-  return <PackageList items={props.packageList}></PackageList>;
-};
+  useEffect(() => {
+    setLoading(true);
+    fetch("/api/package-reader")
+      .then((data) => data.json())
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
 
-export const getStaticProps = async () => {
-  // fetch data from an API
+  if (isLoading) return <div>Loading...</div>;
+  if (data.length === 0) return <div>NO data found!</div>;
 
-  const packageNames = await listPackageNames();
-
-  return {
-    props: {
-      packageList: packageNames,
-    },
-    revalidate: 1,
-  };
+  return <PackageList items={data}></PackageList>;
 };
 
 export default Home;

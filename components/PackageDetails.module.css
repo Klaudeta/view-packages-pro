@@ -1,23 +1,23 @@
 .back {
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .back:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .details {
-    width: 90%;
-    max-width: 40rem;
-    margin: 2rem auto;
-    padding: 0;
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0;
 }
 .details tr:first-child td {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 .details td {
-    box-shadow: 0 2px 8px rgb(0 0 0 / 26%);
-    padding: 0.5rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 26%);
+  padding: 0.5rem;
 }
