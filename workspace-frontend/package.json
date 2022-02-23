@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "lint": "next lint"
+    "lint": "next lint",
+    "heroku-postbuild": "yarn run build"
   },
   "dependencies": {
     "next": "12.0.10",
