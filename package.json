@@ -1,12 +1,12 @@
 {
     "name": "package-viewer-pro",
     "private": true,
-    "engines": {
-        "yarn": "3.1.0"
-    },
     "workspaces": [
         "workspace-frontend",
         "workspace-backend"
+    ],
+    "cacheDirectories": [
+        ".yarn/cache"
     ],
     "scripts": {
         "build": "yarn workspaces foreach run build",
