@@ -8,7 +8,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3001/package-reader/api")
+    fetch("https://klau-package-viewer.herokuapp.com/package-reader/api")
       .then((data) => data.json())
       .then(setData)
       .finally(() => setLoading(false));
