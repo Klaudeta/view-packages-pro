@@ -1,26 +1,22 @@
 {
-  "name": "package-viewer-pro",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.0.10",
-    "prettier": "^2.5.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-query": "^3.34.15",
-    "swr": "^1.2.1"
-  },
-  "devDependencies": {
-    "@types/node": "17.0.17",
-    "@types/react": "17.0.39",
-    "eslint": "8.9.0",
-    "eslint-config-next": "12.0.10",
-    "typescript": "4.5.5"
-  },
-  "packageManager": "yarn@3.2.0-rc.15"
+    "name": "package-viewer-pro",
+    "private": true,
+    "workspaces": [
+        "workspace-frontend",
+        "workspace-backend"
+    ],
+    "scripts": {
+        "backend:dev": "yarn workspace workspace-backend dev",
+        "frontend:dev": "yarn workspace workspace-frontend dev",
+        "start:dev": "yarn backend:dev & yarn frontend:dev"
+    },
+    "dependencies": {
+        "prettier": "^2.5.1"
+    },
+    "devDependencies": {
+        "@types/node": "17.0.17",
+        "eslint": "8.9.0",
+        "typescript": "4.4.4"
+    },
+    "packageManager": "yarn@3.1.0"
 }
