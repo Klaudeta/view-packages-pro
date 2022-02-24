@@ -332,6 +332,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/cors", [
+        ["npm:2.8.12", {
+          "packageLocation": "./.yarn/cache/@types-cors-npm-2.8.12-ff52e8e514-8c45f112c7.zip/node_modules/@types/cors/",
+          "packageDependencies": [
+            ["@types/cors", "npm:2.8.12"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/express", [
         ["npm:4.17.13", {
           "packageLocation": "./.yarn/cache/@types-express-npm-4.17.13-0e12fe9c24-12a2a0e6c4.zip/node_modules/@types/express/",
@@ -1109,6 +1118,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/core-js-pure-npm-3.21.1-8959cc165d/node_modules/core-js-pure/",
           "packageDependencies": [
             ["core-js-pure", "npm:3.21.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["cors", [
+        ["npm:2.8.5", {
+          "packageLocation": "./.yarn/cache/cors-npm-2.8.5-c9935a2d12-ced838404c.zip/node_modules/cors/",
+          "packageDependencies": [
+            ["cors", "npm:2.8.5"],
+            ["object-assign", "npm:4.1.1"],
+            ["vary", "npm:1.1.2"]
           ],
           "linkType": "HARD",
         }]
@@ -4485,9 +4505,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["workspace-backend", "workspace:workspace-backend"],
             ["@types/body-parser", "npm:1.19.2"],
+            ["@types/cors", "npm:2.8.12"],
             ["@types/express", "npm:4.17.13"],
             ["@types/node", "npm:17.0.19"],
             ["body-parser", "npm:1.19.2"],
+            ["cors", "npm:2.8.5"],
             ["express", "npm:4.17.3"],
             ["ts-node-dev", "virtual:2c8596293755d96dd23ba95c111e58e001c83f1eb01ea3569cfa2ab7842cc3d5b5c427b2311da94bc703aef6c47c03a8c354d0ad9277e2bd667f7b8418fa0c56#npm:1.1.8"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=ddd1e8"]
