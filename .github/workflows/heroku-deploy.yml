@@ -38,7 +38,7 @@ jobs:
       - name: Push to Heroku
         run: |
           heroku git:remote -a ${BACKEND_APP_NAME} -r ${BACKEND_APP_NAME}
-          git push ${BACKEND_APP_NAME} HEAD:main
+          git push ${BACKEND_APP_NAME} HEAD:main -f
 
       - name: Create Heroku app and add remote for frontend
         id: create-frontend
@@ -54,7 +54,7 @@ jobs:
       - name: Push to Heroku
         run: |
           heroku git:remote -a ${FRONTEND_APP_NAME} -r ${FRONTEND_APP_NAME}
-          git push ${FRONTEND_APP_NAME} HEAD:main
+          git push ${FRONTEND_APP_NAME} HEAD:main -f
 
 
     
