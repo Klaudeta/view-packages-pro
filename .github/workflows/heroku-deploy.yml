@@ -36,7 +36,9 @@ jobs:
       - name: Set procfile
         run: heroku config:set -a ${BACKEND_APP_NAME} PROCFILE=apps/backend/Procfile
       - name: Push to Heroku
-        run: git push ${BACKEND_APP_NAME} HEAD:main
+        run: |
+          heroku git:remote -a ${BACKEND_APP_NAME}
+          git push ${BACKEND_APP_NAME} HEAD:main
 
       - name: Create Heroku app and add remote for frontend
         id: create-frontend
@@ -50,7 +52,9 @@ jobs:
       - name: Set procfile
         run: heroku config:set -a ${FRONTEND_APP_NAME} PROCFILE=apps/frontend/Procfile NEXT_PUBLIC_API_URL=https://klau-package-viewer-backend.herokuapp.com
       - name: Push to Heroku
-        run: git push ${FRONTEND_APP_NAME} HEAD:main
+        run: |
+          heroku git:remote -a ${FRONTEND_APP_NAME}
+          git push ${FRONTEND_APP_NAME} HEAD:main
 
 
     
