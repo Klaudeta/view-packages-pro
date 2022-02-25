@@ -26,6 +26,7 @@ jobs:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Create Heroku app and add remote for backend
         run: heroku create ${BACKEND_APP_NAME} --remote ${BACKEND_APP_NAME}
+        continue-on-error: true
       - name: Add Heroku buildpacks
         run: |
           heroku buildpacks:add -a ${BACKEND_APP_NAME} heroku-community/multi-procfile
@@ -37,6 +38,7 @@ jobs:
 
       - name: Create Heroku app and add remote for frontend
         run: heroku create ${FRONTEND_APP_NAME} --remote ${FRONTEND_APP_NAME}
+        continue-on-error: true
       - name: Add Heroku buildpacks
         run: |
           heroku buildpacks:add -a ${FRONTEND_APP_NAME} heroku-community/multi-procfile
