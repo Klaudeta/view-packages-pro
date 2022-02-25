@@ -636,6 +636,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"backend@workspace:apps/backend":
+  version: 0.0.0-use.local
+  resolution: "backend@workspace:apps/backend"
+  dependencies:
+    "@types/body-parser": ^1.19.2
+    "@types/cors": ^2.8.12
+    "@types/express": ^4.17.13
+    "@types/node": "*"
+    body-parser: ^1.19.2
+    cors: ^2.8.5
+    express: ^4.17.3
+    ts-node-dev: ^1.1.8
+    typescript: 4.4.4
+  languageName: unknown
+  linkType: soft
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -1577,6 +1593,22 @@ __metadata:
   checksum: 13ea8b08f91e669a64e3ba3a20eb79d7ca5379a81f1ff7f4310d54e2320645503cc0c78daedc93dfb6191287295f6479544a649c64d8e41a1c0fb0c221552346
   languageName: node
   linkType: hard
+
+"frontend@workspace:apps/frontend":
+  version: 0.0.0-use.local
+  resolution: "frontend@workspace:apps/frontend"
+  dependencies:
+    "@types/node": 17.0.17
+    "@types/react": 17.0.39
+    eslint: "*"
+    eslint-config-next: 12.0.10
+    next: 12.0.10
+    react: 17.0.2
+    react-dom: 17.0.2
+    react-query: ^3.34.15
+    typescript: 4.4.4
+  languageName: unknown
+  linkType: soft
 
 "fs-minipass@npm:^2.0.0":
   version: 2.1.0
@@ -3759,38 +3791,6 @@ __metadata:
   checksum: 30b48f91fcf12106ed3186ae4fa86a6a1842416df425be7b60485de14bec665a54a68e4b5156647dec3a70f25e84d270ca8bc8cd23182ed095f5c7206a938c1f
   languageName: node
   linkType: hard
-
-"workspace-backend@workspace:workspace-backend":
-  version: 0.0.0-use.local
-  resolution: "workspace-backend@workspace:workspace-backend"
-  dependencies:
-    "@types/body-parser": ^1.19.2
-    "@types/cors": ^2.8.12
-    "@types/express": ^4.17.13
-    "@types/node": "*"
-    body-parser: ^1.19.2
-    cors: ^2.8.5
-    express: ^4.17.3
-    ts-node-dev: ^1.1.8
-    typescript: 4.4.4
-  languageName: unknown
-  linkType: soft
-
-"workspace-frontend@workspace:workspace-frontend":
-  version: 0.0.0-use.local
-  resolution: "workspace-frontend@workspace:workspace-frontend"
-  dependencies:
-    "@types/node": 17.0.17
-    "@types/react": 17.0.39
-    eslint: "*"
-    eslint-config-next: 12.0.10
-    next: 12.0.10
-    react: 17.0.2
-    react-dom: 17.0.2
-    react-query: ^3.34.15
-    typescript: 4.4.4
-  languageName: unknown
-  linkType: soft
 
 "wrappy@npm:1":
   version: 1.0.2

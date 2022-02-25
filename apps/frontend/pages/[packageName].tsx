@@ -17,7 +17,7 @@ const PackageDetailsPage: NextPage = () => {
     setLoading(true);
     if (router.query.packageName) {
       fetch(
-        `https://klau-package-viewer-backend.herokuapp.com/package-reader/api/${router.query.packageName}`
+        `${process.env.NEXT_PUBLIC_API_URL}/package-reader/api/${router.query.packageName}`
       )
         .then((data) => data.json())
         .then(setData)

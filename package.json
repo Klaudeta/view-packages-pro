@@ -1,18 +1,19 @@
 {
     "name": "package-viewer-pro",
+    "version": "1.0.0",
     "private": true,
-    "workspaces": [
-        "workspace-frontend",
-        "workspace-backend"
-    ],
+    "workspaces": ["apps/frontend", "apps/backend"],
     "cacheDirectories": [
         ".yarn/cache"
     ],
     "scripts": {
+        "start:backend": "yarn workspace backend start",
+        "start:frontend": "yarn workspace frontend start",
+        "build:backend": "yarn workspace backend build",
+        "build:frontend": "yarn workspace frontend build",
         "build": "yarn workspaces foreach run build",
-        "backend:dev": "yarn workspace workspace-backend dev",
-        "frontend:dev": "yarn workspace workspace-frontend dev",
-        "start:dev": "yarn backend:dev & yarn frontend:dev"
+        "dev:backend": "yarn workspace backend dev",
+        "dev:frontend": "yarn workspace frontend dev"
     },
     "dependencies": {
         "prettier": "^2.5.1"
