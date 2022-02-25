@@ -25,9 +25,11 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_SECRET }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Create Heroku app and add remote for backend
+        id: create-backend
         run: heroku create ${BACKEND_APP_NAME} --remote ${BACKEND_APP_NAME}
         continue-on-error: true
       - name: Add Heroku buildpacks
+        if: steps.create-backend.outcome == 'success'
         run: |
           heroku buildpacks:add -a ${BACKEND_APP_NAME} heroku-community/multi-procfile
           heroku buildpacks:add -a ${BACKEND_APP_NAME} heroku/nodejs
@@ -37,9 +39,11 @@ jobs:
         run: git push ${BACKEND_APP_NAME} HEAD:main
 
       - name: Create Heroku app and add remote for frontend
+        id: create-frontend
         run: heroku create ${FRONTEND_APP_NAME} --remote ${FRONTEND_APP_NAME}
         continue-on-error: true
       - name: Add Heroku buildpacks
+        if: steps.create-frontend.outcome == 'success'
         run: |
           heroku buildpacks:add -a ${FRONTEND_APP_NAME} heroku-community/multi-procfile
           heroku buildpacks:add -a ${FRONTEND_APP_NAME} heroku/nodejs
