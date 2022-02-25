@@ -24,3 +24,8 @@ README.md
 **/unplugged
 **/install-state.gz
 
+# heroku utility commands
+heroku.sh
+
+**/.github
+
