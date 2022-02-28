@@ -11,9 +11,9 @@
         "start:frontend": "yarn workspace frontend start",
         "build:backend": "yarn workspace backend build",
         "build:frontend": "yarn workspace frontend build",
-        "build": "yarn workspaces foreach run build",
         "dev:backend": "yarn workspace backend dev",
-        "dev:frontend": "yarn workspace frontend dev"
+        "dev:frontend": "yarn workspace frontend dev",
+        "heroku-postbuild": "yarn workspace $APP build"
     },
     "dependencies": {
         "prettier": "^2.5.1"

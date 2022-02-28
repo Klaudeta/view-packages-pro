@@ -28,14 +28,14 @@ jobs:
         id: create-backend
         run: heroku create ${BACKEND_APP_NAME} --remote ${BACKEND_APP_NAME}
         continue-on-error: true
-      - name: Add Heroku buildpacks
+      - name: Add Heroku buildpacks if app was created on previous step
         if: steps.create-backend.outcome == 'success'
         run: |
           heroku buildpacks:add -a ${BACKEND_APP_NAME} heroku-community/multi-procfile
           heroku buildpacks:add -a ${BACKEND_APP_NAME} heroku/nodejs
       - name: Set procfile
-        run: heroku config:set -a ${BACKEND_APP_NAME} PROCFILE=apps/backend/Procfile
-      - name: Push to Heroku
+        run: heroku config:set -a ${BACKEND_APP_NAME} PROCFILE=apps/backend/Procfile APP=backend
+      - name: Set remote and push to Heroku
         run: |
           heroku git:remote -a ${BACKEND_APP_NAME} -r ${BACKEND_APP_NAME}
           git push ${BACKEND_APP_NAME} HEAD:main -f
@@ -44,14 +44,14 @@ jobs:
         id: create-frontend
         run: heroku create ${FRONTEND_APP_NAME} --remote ${FRONTEND_APP_NAME}
         continue-on-error: true
-      - name: Add Heroku buildpacks
+      - name: Add Heroku buildpacks if app was created on previous step
         if: steps.create-frontend.outcome == 'success'
         run: |
           heroku buildpacks:add -a ${FRONTEND_APP_NAME} heroku-community/multi-procfile
           heroku buildpacks:add -a ${FRONTEND_APP_NAME} heroku/nodejs
       - name: Set procfile
-        run: heroku config:set -a ${FRONTEND_APP_NAME} PROCFILE=apps/frontend/Procfile NEXT_PUBLIC_API_URL=https://klau-package-viewer-backend.herokuapp.com
-      - name: Push to Heroku
+        run: heroku config:set -a ${FRONTEND_APP_NAME} PROCFILE=apps/frontend/Procfile APP=frontend NEXT_PUBLIC_API_URL=https://klau-package-viewer-backend.herokuapp.com
+      - name: Set remote and push to Heroku
         run: |
           heroku git:remote -a ${FRONTEND_APP_NAME} -r ${FRONTEND_APP_NAME}
           git push ${FRONTEND_APP_NAME} HEAD:main -f
